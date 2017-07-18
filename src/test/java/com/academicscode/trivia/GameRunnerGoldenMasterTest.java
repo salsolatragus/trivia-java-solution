@@ -14,7 +14,7 @@ public class GameRunnerGoldenMasterTest {
     public static void main(String[] args) throws FileNotFoundException {
         PrintStream originalSysOut = System.out;
         
-        int numberOfTestRuns = 10;
+        int numberOfTestRuns = 100;
 
         int initialGameId = 42;
         int arbitraryGameIdOffset = 13;
