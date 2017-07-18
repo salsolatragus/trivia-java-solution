@@ -12,7 +12,9 @@ public class GameRunnerGoldenMasterTest {
     private static boolean notAWinner;
 
     public static void main(String[] args) throws FileNotFoundException {
-        File file = new File("test-data", String.format("test-run-%d.txt", 42));
+        int gameId = 42;
+
+        File file = new File("test-data", String.format("test-run-%d.txt", gameId));
 
         // REFACTOR Make the game output stream exchangeable, since we want to change it for testing.
         PrintStream originalSysOut = System.out;
@@ -24,7 +26,8 @@ public class GameRunnerGoldenMasterTest {
         aGame.add("Pat");
         aGame.add("Sue");
 
-        Random rand = new Random(42);
+        // We can conveniently use the game Id as the random number generator seed.
+        Random rand = new Random(gameId);
 
         do {
 
