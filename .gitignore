@@ -1,5 +1,8 @@
 # Java build output files
+# ... from Eclipse
 target/
+# ... from IDEA
+out/
 
 # Analysis reports generated from an Eclipse plugin
 Metrics/
