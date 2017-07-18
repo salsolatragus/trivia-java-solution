@@ -13,11 +13,13 @@ public class GameRunnerGoldenMasterTest {
 
     public static void main(String[] args) throws FileNotFoundException {
         PrintStream originalSysOut = System.out;
+        
+        int numberOfTestRuns = 2;
 
         int initialGameId = 42;
         int arbitraryGameIdOffset = 13;
 
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < numberOfTestRuns; i++) {
             int gameId = initialGameId + i * arbitraryGameIdOffset;
             File file = new File("test-data", String.format("test-run-%d.txt", gameId));
 
