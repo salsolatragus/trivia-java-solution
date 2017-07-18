@@ -12,13 +12,14 @@ public class GameRunnerGoldenMasterTest {
     private static boolean notAWinner;
 
     public static void main(String[] args) throws FileNotFoundException {
+        PrintStream originalSysOut = System.out;
+
         int gameId = 42;
 
         File file = new File("test-data", String.format("test-run-%d.txt", gameId));
 
         // REFACTOR Make the game output stream exchangeable, since we want to change it for testing.
         PrintStream originalSysOut = System.out;
-        System.setOut(new PrintStream(file));
 
         Game aGame = new Game();
 
