@@ -3,8 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/trivia-java.iml" filepath="$PROJECT_DIR$/.idea/modules/trivia-java.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/trivia-java_main.iml" filepath="$PROJECT_DIR$/.idea/modules/trivia-java_main.iml" group="trivia-java" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/trivia-java_test.iml" filepath="$PROJECT_DIR$/.idea/modules/trivia-java_test.iml" group="trivia-java" />
     </modules>
   </component>
 </project>
