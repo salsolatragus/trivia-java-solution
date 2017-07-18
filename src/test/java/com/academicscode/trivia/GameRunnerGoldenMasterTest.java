@@ -16,32 +16,34 @@ public class GameRunnerGoldenMasterTest {
 
         int gameId = 42;
 
-        File file = new File("test-data", String.format("test-run-%d.txt", gameId));
+        for (int i = 0; i < 1; i++) {
+            File file = new File("test-data", String.format("test-run-%d.txt", gameId));
 
-        // REFACTOR Make the game output stream exchangeable, since we want to change it for testing.
-        PrintStream originalSysOut = System.out;
+            // REFACTOR Make the game output stream exchangeable, since we want to change it for testing.
+            System.setOut(new PrintStream(file));
 
-        Game aGame = new Game();
+            Game aGame = new Game();
 
-        aGame.add("Chet");
-        aGame.add("Pat");
-        aGame.add("Sue");
+            aGame.add("Chet");
+            aGame.add("Pat");
+            aGame.add("Sue");
 
-        // We can conveniently use the game Id as the random number generator seed.
-        Random rand = new Random(gameId);
+            // We can conveniently use the game Id as the random number generator seed.
+            Random rand = new Random(gameId);
 
-        do {
+            do {
 
-            aGame.roll(rand.nextInt(5) + 1);
+                aGame.roll(rand.nextInt(5) + 1);
 
-            if (rand.nextInt(9) == 7) {
-                notAWinner = aGame.wrongAnswer();
-            } else {
-                notAWinner = aGame.wasCorrectlyAnswered();
-            }
+                if (rand.nextInt(9) == 7) {
+                    notAWinner = aGame.wrongAnswer();
+                } else {
+                    notAWinner = aGame.wasCorrectlyAnswered();
+                }
 
 
-        } while (notAWinner);
+            } while (notAWinner);
+        }
 
         System.setOut(originalSysOut);
     }
