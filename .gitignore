@@ -1,0 +1,6 @@
+# Java build output files
+target/
+
+# Analysis reports generated from an Eclipse plugin
+Metrics/
+

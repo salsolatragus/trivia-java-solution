@@ -1,0 +1,1 @@
+* Can we remove the empty file `src/test/java/.gitignore`?
