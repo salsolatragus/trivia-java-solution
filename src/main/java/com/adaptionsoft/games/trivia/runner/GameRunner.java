@@ -4,7 +4,7 @@ import java.util.Random;
 
 import com.adaptionsoft.games.uglytrivia.Game;
 
-
+// SMELL most of this code looks like it belongs in Game, so why is it in GameRunner?
 public class GameRunner {
 
 	private static boolean notAWinner;
