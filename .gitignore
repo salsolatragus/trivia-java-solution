@@ -22,3 +22,5 @@ Metrics/
 .idea/**/dynamic.xml
 .idea/**/uiDesigner.xml
 
+# Golden Master test runs
+test-data/test-run*.txt
