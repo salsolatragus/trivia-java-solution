@@ -21,7 +21,8 @@ public class GameRunnerGoldenMasterTest {
 
         for (int i = 0; i < numberOfTestRuns; i++) {
             int gameId = initialGameId + i * arbitraryGameIdOffset;
-            File testRunDirectory = new File("test-data", "test-run");
+            File testDataWorkspace = new File("test-data");
+            File testRunDirectory = new File(testDataWorkspace, "test-run");
             File file = new File(testRunDirectory, String.format("game-%d.txt", gameId));
 
             // REFACTOR Make the game output stream exchangeable, since we want to change it for testing.
