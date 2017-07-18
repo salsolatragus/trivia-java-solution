@@ -1,5 +1,6 @@
 package com.academicscode.trivia;
 
+import java.io.*;
 import java.util.Random;
 
 import com.adaptionsoft.games.uglytrivia.Game;
@@ -10,7 +11,13 @@ public class GameRunnerGoldenMasterTest {
 
     private static boolean notAWinner;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
+        File file = new File("test-data", "golden-master.txt");
+
+        // REFACTOR Make the game output stream exchangeable, since we want to change it for testing.
+        PrintStream originalSysOut = System.out;
+        System.setOut(new PrintStream(file));
+
         Game aGame = new Game();
 
         aGame.add("Chet");
@@ -32,5 +39,6 @@ public class GameRunnerGoldenMasterTest {
 
         } while (notAWinner);
 
+        System.setOut(originalSysOut);
     }
 }
