@@ -9,6 +9,7 @@ import com.adaptionsoft.games.uglytrivia.Game;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 // Intentionally duplicates production GameRunner for now, to avoid changing
 // production code that somebody might depend on.
@@ -61,6 +62,10 @@ public class GameRunnerGoldenMasterTest {
 
     @Test
     public void verifyGoldenMasterTestRun() throws Exception {
+        clearDirectory(testRunDirectory);
+        
+        main(null);
+
         List<String> goldenMasterFiles = getFileNames(goldenMasterDirectory);
         List<String> testRunFiles = getFileNames(testRunDirectory);
         assertEquals(
@@ -76,6 +81,16 @@ public class GameRunnerGoldenMasterTest {
                     goldenMasterLog,
                     testRunLog);
         }
+    }
+
+    private void clearDirectory(File directory) {
+        if (directory.exists()) {
+            for (String fileName : getFileNames(directory)) {
+                assertTrue("Clear game run '" + fileName + "'.", new File(directory, fileName).delete());
+            }
+            assertTrue("Clear Golden Master test run.", directory.delete());
+        }
+        assertTrue("Create test-run directory.", directory.mkdir());
     }
 
     private List<String> getFileNames(File directory) {
