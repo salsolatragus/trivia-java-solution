@@ -67,6 +67,15 @@ public class GameRunnerGoldenMasterTest {
                 "Expect Golden Master and test run to contain the same game runs,",
                 goldenMasterFiles,
                 testRunFiles);
+
+        for (String gameRunFileName : goldenMasterFiles) {
+            String goldenMasterLog = getFileContentAsString(new File(goldenMasterDirectory, gameRunFileName));
+            String testRunLog = getFileContentAsString(new File(testRunDirectory, gameRunFileName));
+            assertEquals(
+                    "Expect test run to match Golden Master for '" + gameRunFileName + "'.",
+                    goldenMasterLog,
+                    testRunLog);
+        }
     }
 
     private List<String> getFileNames(File directory) {
@@ -78,5 +87,19 @@ public class GameRunnerGoldenMasterTest {
             }
         }
         return fileNames;
+    }
+
+    private String getFileContentAsString(File file) throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader(file));
+        try {
+            StringBuilder content = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                content.append(line).append("\n");
+            }
+            return content.toString();
+        } finally {
+            reader.close();
+        }
     }
 }
