@@ -8,6 +8,8 @@ import com.adaptionsoft.games.uglytrivia.Game;
 // Intentionally duplicates production GameRunner for now, to avoid changing
 // production code that somebody might depend on.
 public class GameRunnerGoldenMasterTest {
+    private static final File testDataWorkspace = new File("test-data");
+    private static final File testRunDirectory = new File(testDataWorkspace, "test-run");
 
     public static void main(String[] args) throws FileNotFoundException {
         PrintStream originalSysOut = System.out;
@@ -19,8 +21,6 @@ public class GameRunnerGoldenMasterTest {
 
         for (int i = 0; i < numberOfTestRuns; i++) {
             int gameId = initialGameId + i * arbitraryGameIdOffset;
-            File testDataWorkspace = new File("test-data");
-            File testRunDirectory = new File(testDataWorkspace, "test-run");
             File file = new File(testRunDirectory, String.format("game-%d.txt", gameId));
 
             // REFACTOR Make the game output stream exchangeable, since we want to change it for testing.
