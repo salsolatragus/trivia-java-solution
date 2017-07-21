@@ -9,8 +9,6 @@ import com.adaptionsoft.games.uglytrivia.Game;
 // production code that somebody might depend on.
 public class GameRunnerGoldenMasterTest {
 
-    private static boolean notAWinner;
-
     public static void main(String[] args) throws FileNotFoundException {
         PrintStream originalSysOut = System.out;
         
@@ -37,6 +35,7 @@ public class GameRunnerGoldenMasterTest {
             // We can conveniently use the game Id as the random number generator seed.
             Random rand = new Random(gameId);
 
+            boolean notAWinner;
             do {
 
                 aGame.roll(rand.nextInt(5) + 1);
