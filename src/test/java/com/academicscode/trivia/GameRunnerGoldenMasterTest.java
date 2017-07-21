@@ -1,15 +1,21 @@
 package com.academicscode.trivia;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import com.adaptionsoft.games.uglytrivia.Game;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 // Intentionally duplicates production GameRunner for now, to avoid changing
 // production code that somebody might depend on.
 public class GameRunnerGoldenMasterTest {
     private static final File testDataWorkspace = new File("test-data");
     private static final File testRunDirectory = new File(testDataWorkspace, "test-run");
+    private static final File goldenMasterDirectory = new File(testDataWorkspace, "golden-master");
 
     public static void main(String[] args) throws FileNotFoundException {
         PrintStream originalSysOut = System.out;
@@ -51,5 +57,26 @@ public class GameRunnerGoldenMasterTest {
         }
 
         System.setOut(originalSysOut);
+    }
+
+    @Test
+    public void verifyGoldenMasterTestRun() throws Exception {
+        List<String> goldenMasterFiles = getFileNames(goldenMasterDirectory);
+        List<String> testRunFiles = getFileNames(testRunDirectory);
+        assertEquals(
+                "Expect Golden Master and test run to contain the same game runs,",
+                goldenMasterFiles,
+                testRunFiles);
+    }
+
+    private List<String> getFileNames(File directory) {
+        List<String> fileNames = new ArrayList<String>();
+        File[] files = directory.listFiles();
+        if (files != null) {
+            for (File file : files) {
+                fileNames.add(file.getName());
+            }
+        }
+        return fileNames;
     }
 }
